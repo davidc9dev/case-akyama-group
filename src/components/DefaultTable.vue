@@ -27,7 +27,7 @@
                         size="small"
                         title="Visualizar"
                         class="mr-2"
-                        @click=" $router.push('/alunos/show/' + item.id)"
+                        @click=" $router.push('/alunos/' + item.id)"
                     />
                     <v-btn
                         flat
@@ -38,7 +38,7 @@
                         size="small"
                         title="Editar"
                         class="mr-2"
-                        @click="$router.push(`/${route}/show/${item.id}`)"
+                        @click="$router.push(`/${route}/${item.id}`)"
                     />
                     <v-btn
                         flat
@@ -49,7 +49,7 @@
                         size="small"
                         title="Deletar"
                         class="mr-2"
-                        @click="$router.push(`/${route}/show/${item.id}`)"
+                        @click="$router.push(`/${route}/${item.id}`)"
                     />
               </td>
             </template>

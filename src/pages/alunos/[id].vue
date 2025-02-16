@@ -25,7 +25,7 @@
             }
         },
         async created(){
-            console.log('logs',this.$router.params,this.$router.props)
+            console.log('logs',this.$route.params.id)
         }
     }
 
