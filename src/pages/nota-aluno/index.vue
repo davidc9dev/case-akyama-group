@@ -34,6 +34,7 @@
             return {
                 barData:[
                     ['Tasks', 'Média'],
+                    [,0]
                     
                 ],
                 dataNotaProva:'',
@@ -78,6 +79,8 @@
             loadDataChart(){
                 this.dataNotaProva = this.searchItems('nota-prova')
                 let uniqueValue = []
+                
+                if(this.dataNotaProva && this.dataNotaProva.length>0)this.barData = [['Tasks', 'Média']]
                 for(let item of this.dataNotaProva){
                     if(typeof item.aluno_id == 'number' && !uniqueValue.includes(item.aluno_id)){
                         let count = 0
