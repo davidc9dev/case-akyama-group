@@ -34,3 +34,10 @@ npm run-script dev
 
 depois que o comando for finalizado, caso não abra automaticamente uma aba no navegador,
 entre na url http://localhost:3000
+
+### Dicas de uso
+
+- Prencha os dados da aba cadastro, na ordem que está lista.
+
+- Para o lançamento de notas, va na aba acompanhamento "Lançar notas"
+
