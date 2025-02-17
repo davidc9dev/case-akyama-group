@@ -16,7 +16,6 @@ export default {
         },
         optionsItems(route,items){
             let allData = this.searchItems(route)
-            console.log(allData,'alldata')
             allData.map(item=>{
                 items.push({item:item.descricao ||item.nome, value:item.id})
             })
@@ -28,6 +27,32 @@ export default {
                 data = JSON.parse(dataItem)
             }
             return data
-        }
+        },
+        formatarValor(valor, prefixo = '', casas = 2) {
+            if (valor=='' || valor == undefined || valor == null ) valor = 0.00
+            if(typeof valor == 'string'){
+               valor = valor.replace(',','.')
+               valor = parseFloat(valor)
+            }
+           
+            if (isNaN(valor)) valor = 0.00
+            // valor = this.arredondar(valor, casas)
+            let formatter
+            if(prefixo && prefixo != '' && typeof prefixo != 'number'){
+                formatter = new Intl.NumberFormat('pt-BR', {
+                    style: 'currency',
+                    currency: 'BRL' ,
+                    minimumFractionDigits: casas,
+                });
+            }
+            else{
+                formatter = new Intl.NumberFormat('pt-BR', {
+                    minimumFractionDigits: casas,
+                    maximumFractionDigits: casas
+                });
+            }
+            return formatter.format(valor.toPrecision(99))
+            
+        },
     },
 }

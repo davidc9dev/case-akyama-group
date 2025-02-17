@@ -113,6 +113,11 @@ const MainRoutes = {
             path: '/nota-aluno',
             component: () => import('../pages/nota-aluno/index.vue')
         },
+        {
+            name: 'dashboard',
+            path: '/',
+            component: () => import('../pages/nota-aluno/index.vue')
+        },
        
     ]
 };
