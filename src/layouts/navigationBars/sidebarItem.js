@@ -12,24 +12,24 @@ const sidebarItem =[
     { header: 'Cadastros',
       items:[
         {
-            title: 'Alunos',
-            icon: 'mdi-account',
-            to: '/alunos'
-        },
-        {
-            title: 'Professores',
-            icon: 'mdi-account-tie',
-            to: '/professores'
-        },
-        {
             title: 'Turmas',
             icon: 'mdi-google-classroom ',
             to: '/turmas'
         },
         {
-            title: 'Matérias',
-            icon: 'mdi-bookshelf',
-            to: '/materias'
+          title: 'Matérias',
+          icon: 'mdi-bookshelf',
+          to: '/materias'
+        },
+        {
+          title: 'Alunos',
+          icon: 'mdi-account',
+          to: '/alunos'
+        },
+        {
+          title: 'Professores',
+          icon: 'mdi-account-tie',
+          to: '/professores'
         },
         {
             title: 'Provas',

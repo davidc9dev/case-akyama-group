@@ -21,7 +21,7 @@ export default defineConfig({
     }),
     // https://github.com/vuetifyjs/vuetify-loader/tree/master/packages/vite-plugin#readme
     Vuetify({
-      // autoImport: true,
+      autoImport: true,
       styles: {
         configFile: 'src/styles/settings.scss',
       },
@@ -35,16 +35,16 @@ export default defineConfig({
         }],
       },
     }),
-    // AutoImport({
-    //   imports: [
-    //     'vue',
-    //     'vue-router',
-    //   ],
-    //   eslintrc: {
-    //     enabled: true,
-    //   },
-    //   vueTemplate: true,
-    // }),
+    AutoImport({
+      imports: [
+        'vue',
+        'vue-router',
+      ],
+      eslintrc: {
+        enabled: true,
+      },
+      vueTemplate: true,
+    }),
   ],
   define: { 'process.env': {} },
   resolve: {

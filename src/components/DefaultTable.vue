@@ -7,58 +7,65 @@
             :items-length="pagination"
         >
             <template v-slot:top>
-                    <VToolbar
+                
+                <VToolbar
                         class="mb-2 text-"
                         color="secondary"
                         dark
                         flat
                         align="center"
                     >
-                        <VToolbarTitle> {{ title }}</VToolbarTitle>
-                    </VToolbar>
+                    <VToolbarTitle> {{ title }}</VToolbarTitle>
+                </VToolbar>
+                <div>
+                    <v-btn 
+                            text="Adicionar" 
+                            prepend-icon="mdi-plus"
+                            class="ma-2"
+                            color="primary"
+                            variant="outlined"
+                            v-if="!this.$route.meta.fdisable"
+                            @click="$router.push(`/${route}/edit/new`)"
+                            >
+                    </v-btn>
+                </div>
             </template>
             <template v-slot:item.actions="{ item }">
                 <td class="text-left">
-                    <v-btn
-                        flat
-                        round
+                    <DefaultTableButton
                         icon="mdi-eye"
                         color="primary"
-                        size="small"
-                        title="Visualizar"
-                        class="mr-2"
-                        @click=" $router.push('/alunos/show/' + item.id)"
-                    />
-                    <v-btn
-                        flat
-                        round
-                        dense
+                        label="Visualizar"
+                        :route="`/${route}/show/${item.id}`"
+                    >
+                    </DefaultTableButton>
+                    <DefaultTableButton
                         icon="mdi-pencil"
                         color="secondary"
-                        size="small"
-                        title="Editar"
-                        class="mr-2"
-                        @click="$router.push(`/${route}/show/${item.id}`)"
-                    />
-                    <v-btn
-                        flat
-                        round
-                        dense
+                        label="Editar"
+                        :route="`/${route}/edit/${item.id}`"
+                    >
+                    </DefaultTableButton>
+                    <DefaultTableButton
                         icon="mdi-delete"
                         color="red"
-                        size="small"
-                        title="Deletar"
-                        class="mr-2"
-                        @click="$router.push(`/${route}/show/${item.id}`)"
-                    />
+                        label="Deletar"
+                        :route="route"
+                        :id="item.id"
+                    >
+                    </DefaultTableButton>
               </td>
             </template>
         </v-data-table-server>
     </v-container>
 </template>
 <script>
+   import DefaultTableButton from './DefaultTableButton.vue';
     export default {
         name: 'PageIndex',
+        components:{
+            DefaultTableButton
+        },
         props:{
             data: Array,
             headers: Array,
@@ -66,11 +73,6 @@
             pagination:Number,
             route:String,
         },
-        data() {
-            return {
-        
-            }
-        }
     }
 
 </script>

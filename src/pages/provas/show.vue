@@ -1,7 +1,7 @@
 <template >
     <v-container>
         <v-responsive>
-            <DefaultTitle :title="'Cadastro de Aluno'" :subtitle="'Crie ou altere o cadastro de produto'" ></DefaultTitle>
+            <DefaultTitle :title="'Cadastro de Provas'" :subtitle="'Crie ou altere o cadastro de uma Prova'" ></DefaultTitle>
             <v-card class="mt-5">
                 <v-card-actions>
                     <v-btn 
@@ -18,7 +18,7 @@
                         prepend-icon="mdi-pencil"
                         color="secondary"
                         variant="outlined"
-                        @click="$router.push('/alunos/edit/'+ data.id)"
+                        @click="$router.push('/provas/edit/'+ data.id)"
                         v-if="this.$route.meta.fdisable"
                         >
                     </v-btn>
@@ -26,7 +26,7 @@
                         text="Cancelar" 
                         color="red"
                         variant="outlined"
-                        to="/alunos"
+                        to="/provas"
                         >
                     </v-btn>
                 </v-card-actions>
@@ -34,30 +34,13 @@
                     <v-row>
                         <v-col cols="12" lg="7" md="12" >
                             <v-text-field
-                                v-model="data.nome"
+                                v-model="data.descricao"
                                 hide-details="auto"
-                                label="Nome"
+                                label="Descrição"
                                 persistent-placeholder
                                 :disabled="this.$route.meta.fdisable"
                             >
                             </v-text-field>
-                        </v-col>
-                        <v-col cols="12" lg="2" md="6">
-                            <v-text-field
-                                v-model="data.data_nascimento"
-                                hide-details="auto"
-                                label="Data de nascimento"
-                                persistent-placeholder
-                                :disabled="this.$route.meta.fdisable"
-
-                            >
-                            </v-text-field>
-                            <!-- <v-date-input
-                                v-model="data.date"
-                                label="Data de nascimento"
-                                persistent-placeholder
-                            >
-                            </v-date-input> -->
                         </v-col>
                         <v-col cols="12" lg="3" md="6">
                             <v-select 
@@ -74,24 +57,28 @@
                     </v-row>    
                     <v-row>
                         <v-col cols="12" lg="7" md="7">
-                            <v-text-field
-                                v-model="data.nome_responsavel"
-                                hide-details="auto"
-                                label="Nome do Responsável"
-                                persistent-placeholder
+                            <v-select 
+                                v-model="data.professor_id" 
+                                :items="itemsProfessores"
+                                item-title="item"
+                                item-value="value"
+                                label="Professor"
+                                clearable="true"
                                 :disabled="this.$route.meta.fdisable"
                             >
-                            </v-text-field>
+                            </v-select>
                         </v-col>
-                        <v-col cols="12" lg="3" md="5">
-                            <v-text-field
-                                v-model="data.telefone_responsavel"
-                                hide-details="auto"
-                                label="Telefone do responsável"
-                                persistent-placeholder
+                        <v-col cols="12" lg="3" md="5" >
+                            <v-select 
+                                v-model="data.materia_id" 
+                                :items="itemsMaterias"
+                                item-title="item"
+                                item-value="value"
+                                label="Matéria"
+                                clearable="true"
                                 :disabled="this.$route.meta.fdisable"
                             >
-                            </v-text-field>
+                            </v-select>
                         </v-col>
                     </v-row>
                 </v-card-item>
@@ -101,11 +88,11 @@
     </v-container>    
 </template>
 <script>
-    import alunosData from './alunosData';
+    import provasData from './provasData';
     import notifyUser from '@/components/notifyUser.vue';
     export default {
     name: "PageIndex",
-        mixins: [alunosData],
+        mixins: [provasData],
         components:{
             notifyUser
         },

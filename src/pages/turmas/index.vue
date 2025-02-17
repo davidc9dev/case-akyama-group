@@ -1,10 +1,9 @@
 <template >
-    <v-container>
+    <v-container >
         <v-responsive>
             <v-row>
                 <v-col>
-                    <DefaultTitle :title="'rafael zema'" :subtitle="'vereado'" ></DefaultTitle>
-                    <DefaultTable :header="headers" :data="virtualBoats" :pagination="pagination" ></DefaultTable>
+                    <DefaultTable title="Listagem de Turmas" route="turmas" :headers="headers" :data="dataTable" :pagination="pagination" ></DefaultTable>
                 </v-col>
             </v-row>
         </v-responsive>
@@ -13,32 +12,28 @@
 <script>
     import DefaultTable from '@/components/DefaultTable.vue';
     import DefaultTitle from '@/components/DefaultTitle.vue';
+    import turmasData from './turmasData';
+    import utils from '@/boot/utils';
     export default {
         name: 'PageIndex',
+        mixins:[turmasData,utils],
         componentes:{
             DefaultTable,
             DefaultTitle
         },
         data() {
             return {
-                pagination:13,
+                pagination:0,
                 headers:[
-                    { title: 'Boat Type', align: 'start', key: 'name' },
-                    { title: 'Speed (knots)', align: 'end', key: 'speed' },
-                    { title: 'Length (m)', align: 'end', key: 'length' },
-                    { title: 'Price ($)', align: 'end', key: 'price' },
-                    { title: 'Year', align: 'end', key: 'year' },
+                    { title: 'Ações', align: 'start', key: 'actions' },
+                    { title: 'Descrição', align: 'start', key: 'descricao' },
                 ],
-                virtualBoats:[
-                    {
-                        name: 'Speedster',
-                        speed: 35,
-                        length: 22,
-                        price: 300000,
-                        year: 2021,
-                  },
-                ]
+                dataTable:[]
             }
+        },
+        created(){
+            this.dataTable = this.searchItems('turmas')
+            this.pagination = this.dataTable.length
         }
     }
 
